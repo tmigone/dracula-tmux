@@ -14,7 +14,7 @@ DATAFILE=/tmp/.dracula-tmux-data
 ensure_single_process()
 {
   # check for another running instance of this script and terminate it if found
-  [ -f $LOCKFILE ] && ps -p "$(cat $LOCKFILE)" -o cmd= | grep -F " ${BASH_SOURCE[0]}" && kill "$(cat $LOCKFILE)"
+  [ -f $LOCKFILE ] && ps -p "$(< $LOCKFILE)" -o args= | grep -F " ${BASH_SOURCE[0]}" && kill "$(< $LOCKFILE)"
   echo $$ > $LOCKFILE
 }
 
