@@ -29,11 +29,7 @@ fetch_weather_information()
 #get weather display
 display_weather()
 {
-  if $fahrenheit; then
-    display_weather='&u' # for USA system
-  else
-    display_weather='&m' # for metric system
-  fi
+  display_weather='&m' # for metric system
   weather_information=$(fetch_weather_information $display_weather)
 
   weather_condition=$(echo $weather_information | rev | cut -d ' ' -f2- | rev) # Sunny, Snow, etc
